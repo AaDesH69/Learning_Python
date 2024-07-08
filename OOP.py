@@ -1,23 +1,13 @@
-class car:
-    def __init__(self,model):
-        self.model = model
-        
+class Cloth:
+    def __init__(self, color, price, issold, company):
+        self.color = color
+        self.price = price
+        self.issold = issold
+        self.company = company
 
-    def color(self):
-        print("color is", self.model)
+    def info(self):
+        print(f"You Have a {kapda.color} {kapda.company}, Which Cost ${kapda.price}.")
 
+kapda = Cloth("Blue", 2000, False, "Nike")
 
-c = car("red")
-
-c.color()
-
-class name(car):
-    def __init__(self, model, age):
-        super().__init__(model)
-        self.age = age
-        print(self.age)
-
-
-n = name("blue", 20)
-
-n.color()
+kapda.info()
