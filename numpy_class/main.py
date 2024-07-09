@@ -58,3 +58,29 @@ re_array = np.array([1, 2, 3, 4, 5, 6])
 re_shapped_Array = re_array.reshape((2, 3))
 print(re_shapped_Array) """
 
+""" array indexing
+arr4 = np.array([
+    [[1, 2, 3], [4, 5, 6]],
+    [[7, 8, 9], [10, 11, 12]],
+    [[13, 14, 15], [16, 17, 18]]
+])
+print(arr4[1, 1, 2])
+
+
+arr5 = np.array([
+    [[4, 22, 3], [32, 523, 534]],
+    [[72, 84, 94], [120, 1321, 12342]],
+    [[132, 142, 153], [146, 1473, 138]]
+])
+print(arr5[2, 1, 2]) """
+
+arr5 = np.array([
+    [[4, 22, 3], [32, 523, 534]],
+    [[72, 84, 94], [120, 1321, 12342]],
+    [[132, 142, 153], [146, 1473, 138]]
+])
+
+print(arr5[arr5 < 50])
+
+trans = np.transpose(arr5)
+print(trans)

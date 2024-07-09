@@ -1,31 +1,37 @@
-import speech_recognition as sr
-def recognize_voice():
-  """
-  Captures user voice input, recognizes it using Google Speech Recognition,
-  and returns the transcribed text.
-  """
-  # Create a recognizer instance
-  recognizer = sr.Recognizer()
+# -*- coding: utf-8 -*-
+import haloboard
+import time
+import event
 
-  # Use a context manager to capture audio input from the microphone
-  with sr.Microphone() as source:
-    print("Speak now...")
-    audio = recognizer.listen(source)
+@event.start
+def use_code():
+    haloboard.wifi.start(ssid = "Maker-guest", password = "makeblock", mode = haloboard.wifi.WLAN_MODE_STA)
 
-  try:
-    # Recognize speech using Google Speech Recognition
-    text = recognizer.recognize_google(audio)
-    print("You said: " + text)
-    return text
-  except sr.UnknownValueError:
-    print("Speech could not be understood")
-    return None
-  except sr.RequestError as e:
-    print(f"Could not request results from Google Speech Recognition service; {e}")
-    return None
+    while(True):
+        if haloboard.wifi.is_connected() == True:
+            print("wifi is connected!")
+            break;
 
-# Example usage
-recognized_text = recognize_voice()
-if recognized_text:
-  # Do something with the recognized text, like translating it, etc.
-  print(f"You can now use the recognized text: {recognized_text}")
+    while True:
+        if haloboard.button.is_pressed():
+            haloboard.led.show_all(0, 0, 50)
+            haloboard.speech_recognition.start(haloboard.speech_recognition.SERVER_MICROSOFT, haloboard.speech_recognition.LAN_DEFAULT, 2)
+            if haloboard.speech_recognition.get_error_code() != 0:
+                str = haloboard.speech_recognition.get_error_message()
+                print("error_message:" + str)
+            else:
+                result = haloboard.speech_recognition.get_result_code()
+                print("result:" + result)
+                if '红色' in result:
+                    haloboard.led.show_all(50, 0, 0)
+                elif '黄色' in result:
+                    haloboard.led.show_all(50, 50, 0)
+                elif '白色' in result:
+                    haloboard.led.show_all(50, 50, 50)
+                elif '蓝色' in result:
+                    haloboard.led.show_all(0, 0, 50)
+                elif '绿色' in result:
+                    haloboard.led.show_all(0, 50, 0)
+                else:
+                    haloboard.led.show_all(0, 0, 0)
+        time.sleep(0.5)
