@@ -40,15 +40,15 @@ plt.ylabel('y-axis Lable')
 plt.title('Scatterplot Example')
 plt.show() """
 
-#To create bar graph
+""" #To create bar graph
 import matplotlib.pyplot as plt
 import numpy as np
 
 np.random.seed(19680801)
 
 
-def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs):
-    """
+def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs): """
+"""
     Draw a gradient image based on a colormap.
 
     Parameters
@@ -65,7 +65,7 @@ def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs):
         Other parameters are passed on to `.Axes.imshow()`.
         In particular, *cmap*, *extent*, and *transform* may be useful.
     """
-    phi = direction * np.pi / 2
+"""     phi = direction * np.pi / 2
     v = np.array([np.cos(phi), np.sin(phi)])
     X = np.array([[v @ [1, 0], v @ [1, 1]],
                   [v @ [0, 0], v @ [0, 1]]])
@@ -94,4 +94,4 @@ N = 10
 x = np.arange(N) + 0.15
 y = np.random.rand(N)
 gradient_bar(ax, x, y, width=0.7)
-plt.show()
+plt.show() """
